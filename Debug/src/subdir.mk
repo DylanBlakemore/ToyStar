@@ -4,13 +4,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/ToyStar.cpp 
+../src/ToyStar.cpp \
+../src/particle.cpp \
+../src/solver.cpp 
 
 OBJS += \
-./src/ToyStar.o 
+./src/ToyStar.o \
+./src/particle.o \
+./src/solver.o 
 
 CPP_DEPS += \
-./src/ToyStar.d 
+./src/ToyStar.d \
+./src/particle.d \
+./src/solver.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

@@ -31,14 +31,12 @@ public:
 			weight = pow(2 - q,3);
 		else if (q >= 0 && q < 1)
 			weight = pow(2 - q,3) - 4*pow(1 - q,3);
-
-		cout << "In child getWeight" << endl;
 		return weight * Ch;
 	}
 
 	/* Returns the gradient of the weighting function as a vector */
-	virtual vector<float> getGradient(float r1, float r2) {
-		vector<float> grad = {0,0};
+	virtual float getGradientCoefficient(float r1, float r2) {
+		float coeff = 0;
 		float r = getDistance(r1, r2);
 
 		if (r > 0)
@@ -52,24 +50,13 @@ public:
 			float df2 = -2*w*pow(v,-1/2)*pow(h,-1);
 
 			if (q >= 2)
-			{
-				grad[0] = 0;
-				grad[1] = 0;
-			}
+				coeff = 0;
 			else if (q >= 1)
-			{
-				grad[0] = Ch * df1 * r1;
-				grad[1] = Ch * df1 * r2;
-			}
+				coeff = Ch * df1;
 			else if (q >= 0 && q < 1)
-			{
-				grad[0] = Ch * (df1*r1 - 4*df2*r1);
-				grad[1] = Ch * (df1*r2 - 4*df2*r2);
-			}
+				coeff = Ch * (df1 - 4*df2);
 		}
-
-		cout << "In child getGradient" << endl;
-		return grad;
+		return coeff;
 	}
 
 	/* Returns the laplacian of the weighting function */
@@ -107,7 +94,6 @@ public:
 			else if (q >= 0 && q < 1)
 				laplacian = (d2f1_dr12 + d2f1_dr22) - 4*(d2f2_dr12 + d2f2_dr22);
 		}
-		cout << "In child getLaplacian" << endl;
 		return laplacian * Ch;
 	}
 

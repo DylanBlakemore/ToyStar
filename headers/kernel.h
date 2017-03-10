@@ -20,17 +20,14 @@ public:
 	}
 
 	virtual float getWeight(float r1, float r2) {
-		cout << "In parent getWeight" << endl;
 		return 0;
 	}
 
-	virtual vector<float> getGradient(float r1, float r2) {
-		cout << "In parent getGradient" << endl;
+	virtual float getGradientCoefficient(float r1, float r2) {
 		return 0;
 	}
 
 	virtual float getLaplacian(float r1, float r2) {
-		cout << "In parent getLaplacian" << endl;
 		return 0;
 	}
 
