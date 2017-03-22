@@ -5,16 +5,19 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/ToyStar.cpp \
+../src/csv.cpp \
 ../src/particle.cpp \
 ../src/solver.cpp 
 
 OBJS += \
 ./src/ToyStar.o \
+./src/csv.o \
 ./src/particle.o \
 ./src/solver.o 
 
 CPP_DEPS += \
 ./src/ToyStar.d \
+./src/csv.d \
 ./src/particle.d \
 ./src/solver.d 
 

@@ -24,6 +24,8 @@ public:
 		R = R_in;
 		N = particles.size();
 		nu = nu_in;
+		t = 0;
+		iter = 0;
 
 		for (int i = 0; i < N; i++)
 		{
@@ -34,6 +36,8 @@ public:
 
 	void update(Kernel* kernel, float dt);
 
+	vector<vector<float> > getHistory(){return history;}
+
 private:
 	void calculateDensities(Kernel* kernel);
 	void calculateAccelerations(Kernel* kernel);
@@ -43,7 +47,10 @@ private:
 	float R;	// star radius
 	float N;	// number of particles
 	float nu;	// damping constant
+	float t;	// time
+	float iter;
 	vector<Particle> particles;
+	vector<vector<float> > history;
 };
 
 

@@ -17,7 +17,7 @@ using namespace std;
 class CubicSplineKernel2D : public Kernel {
 public:
 	CubicSplineKernel2D(float h_in) :Kernel(h_in) {
-		Ch = 5.0 / (14 * M_PI * pow(h,2));
+		Ch = 5.0 / (14.0 * M_PI * pow(h,2));
 	}
 	/* Returns the weighting value */
 	virtual float getWeight(float r1, float r2) {
@@ -47,7 +47,7 @@ public:
 			float w = 1 - q;
 
 			float df1 = -3*pow(u,2)*pow(h,-1)*pow(v,-1/2);
-			float df2 = -2*w*pow(v,-1/2)*pow(h,-1);
+			float df2 = -3*pow(w,2)*pow(h,-1)*pow(v,-1/2);
 
 			if (q >= 2)
 				coeff = 0;
